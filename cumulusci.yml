@@ -1,0 +1,35 @@
+minimum_cumulusci_version: '3.47.0'
+project:
+    name: CCIDemo2
+    package:
+        name: ccipack
+        api_version: '52.0'
+    git:
+        default_branch: 'main'
+    source_format: sfdx
+
+tasks:
+    robot:
+        options:
+            suites: robot/CCIDemo2/tests
+            options:
+                outputdir: robot/CCIDemo2/results
+
+    robot_testdoc:
+        options:
+            path: robot/CCIDemo2/tests
+            output: robot/CCIDemo2/doc/CCIDemo2_tests.html
+
+    run_tests:
+        options:
+            required_org_code_coverage_percent: 75
+
+flows:
+    config_qa:
+        steps:
+            3:
+                task: load_dataset
+    config_dev:
+        steps:
+            3:
+                task: load_dataset
